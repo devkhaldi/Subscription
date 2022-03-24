@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('subscribers', function (Blueprint $table) {
             $table->id();
-            
+            $table->text('name');
+            $table->text('email');
+            $table->bigInteger('website_id')->unsigned() ;
+            $table->foreign('website_id')->references('id')->on('websites')->onDelete('cascade') ;
             $table->timestamps();
         });
     }

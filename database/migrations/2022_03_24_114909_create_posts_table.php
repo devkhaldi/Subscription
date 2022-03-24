@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->text('name');
+            $table->longText('description');
+            $table->bigInteger('website_id')->unsigned() ;
+            $table->foreign('website_id')->references('id')->on('websites')->onDelete('cascade') ;
             $table->timestamps();
         });
     }
